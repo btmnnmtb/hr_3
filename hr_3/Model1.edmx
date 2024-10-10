@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище pr1poCCCModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="table_111">
+          <Key>
+            <PropertyRef Name="id_table_11" />
+          </Key>
+          <Property Name="id_table_11" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car_name" Type="varchar" MaxLength="100" />
+          <Property Name="car_cvet" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="table_222">
+          <Key>
+            <PropertyRef Name="id_table_22" />
+          </Key>
+          <Property Name="id_table_22" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car_god_proizvod" Type="int" />
+          <Property Name="car_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__table_222__car_i__3F466844">
+          <End Role="table_111" Type="Self.table_111" Multiplicity="0..1" />
+          <End Role="table_222" Type="Self.table_222" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_111">
+              <PropertyRef Name="id_table_11" />
+            </Principal>
+            <Dependent Role="table_222">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище pr1poCCCModelContainer">
+          <EntitySet Name="table_111" EntityType="Self.table_111" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table_222" EntityType="Self.table_222" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__table_222__car_i__3F466844" Association="Self.FK__table_222__car_i__3F466844">
+            <End Role="table_111" EntitySet="table_111" />
+            <End Role="table_222" EntitySet="table_222" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pr1poCCCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="table_111">
+          <Key>
+            <PropertyRef Name="id_table_11" />
+          </Key>
+          <Property Name="id_table_11" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="car_cvet" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="table_222" Relationship="Self.FK__table_222__car_i__3F466844" FromRole="table_111" ToRole="table_222" />
+        </EntityType>
+        <EntityType Name="table_222">
+          <Key>
+            <PropertyRef Name="id_table_22" />
+          </Key>
+          <Property Name="id_table_22" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_god_proizvod" Type="Int32" />
+          <Property Name="car_id" Type="Int32" />
+          <NavigationProperty Name="table_111" Relationship="Self.FK__table_222__car_i__3F466844" FromRole="table_222" ToRole="table_111" />
+        </EntityType>
+        <Association Name="FK__table_222__car_i__3F466844">
+          <End Role="table_111" Type="Self.table_111" Multiplicity="0..1" />
+          <End Role="table_222" Type="Self.table_222" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="table_111">
+              <PropertyRef Name="id_table_11" />
+            </Principal>
+            <Dependent Role="table_222">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pr1poCCCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="table_111" EntityType="Self.table_111" />
+          <EntitySet Name="table_222" EntityType="Self.table_222" />
+          <AssociationSet Name="FK__table_222__car_i__3F466844" Association="Self.FK__table_222__car_i__3F466844">
+            <End Role="table_111" EntitySet="table_111" />
+            <End Role="table_222" EntitySet="table_222" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище pr1poCCCModelContainer" CdmEntityContainer="pr1poCCCEntities">
+          <EntitySetMapping Name="table_111">
+            <EntityTypeMapping TypeName="pr1poCCCModel.table_111">
+              <MappingFragment StoreEntitySet="table_111">
+                <ScalarProperty Name="id_table_11" ColumnName="id_table_11" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+                <ScalarProperty Name="car_cvet" ColumnName="car_cvet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_222">
+            <EntityTypeMapping TypeName="pr1poCCCModel.table_222">
+              <MappingFragment StoreEntitySet="table_222">
+                <ScalarProperty Name="id_table_22" ColumnName="id_table_22" />
+                <ScalarProperty Name="car_god_proizvod" ColumnName="car_god_proizvod" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
